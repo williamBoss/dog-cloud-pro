@@ -8,18 +8,280 @@
     <artifactId>dog-cloud</artifactId>
     <packaging>pom</packaging>
     <version>2021.0.0</version>
+    <description>dog-cloud基础框架</description>
+
     <modules>
         <module>dog-auth</module>
         <module>dog-common</module>
         <module>dog-gateway</module>
         <module>dog-service</module>
-        <module>dog-servoce-api</module>
+        <module>dog-service-api</module>
         <module>dog-visual</module>
+        <module>dog-common-datasource-starter</module>
     </modules>
 
+    <!--版本号-->
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
+        <!--全局框架版本号-->
+        <dog.version>2021.0.0</dog.version>
+        <!--Java编译版本-->
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <!-- 字符集编码 -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!--各组件版本号-->
+        <java.version>1.8</java.version>
+        <spring-boot.version>2.4.1</spring-boot.version>
+        <spring-cloud.version>2020.0.0</spring-cloud.version>
+        <spring-cloud-alibaba.version>2.2.3.RELEASE</spring-cloud-alibaba.version>
+        <spring-boot-admin.version>2.3.1</spring-boot-admin.version>
+        <commons.io.version>2.5</commons.io.version>
+        <commons.fileupload.version>1.3.3</commons.fileupload.version>
+        <common-pool.version>2.6.2</common-pool.version>
+        <druid.version>1.2.4</druid.version>
+        <dynamic-ds.version>3.2.1</dynamic-ds.version>
+        <mybatis-plus.version>3.4.1</mybatis-plus.version>
+        <pagehelper.boot.version>1.3.0</pagehelper.boot.version>
+        <gson.version>2.8.6</gson.version>
+        <jackson.version>2.12.0</jackson.version>
+        <kaptcha.version>2.3.2</kaptcha.version>
+        <lombok.version>1.18.16</lombok.version>
+        <knife4j.version>3.0.2</knife4j.version>
+        <jwt.version>0.9.0</jwt.version>
+        <httpclient.version>4.5.12</httpclient.version>
+        <pinyin4j.version>2.5.1</pinyin4j.version>
+        <jasypt.version>2.1.0</jasypt.version>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- spring boot 依赖 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- spring cloud 依赖 -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- spring cloud alibaba 依赖 -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- 验证码 -->
+            <dependency>
+                <groupId>com.github.penggle</groupId>
+                <artifactId>kaptcha</artifactId>
+                <version>${kaptcha.version}</version>
+            </dependency>
+            <!-- io常用工具类 -->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons.io.version}</version>
+            </dependency>
+            <!-- 文件上传工具类 -->
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>${commons.fileupload.version}</version>
+            </dependency>
+            <!-- 公共资源池 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-pool2</artifactId>
+                <version>${common-pool.version}</version>
+            </dependency>
+            <!-- Druid -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+            <!-- Dynamic DataSource -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+                <version>${dynamic-ds.version}</version>
+            </dependency>
+            <!-- easyExcel工具 -->
+            <!--gson-->
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>${gson.version}</version>
+            </dependency>
+            <!-- jackson 解析器和生成器 -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <!-- Mybatis-plus 依赖配置 -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <!-- pagehelper 分页插件 -->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper.boot.version}</version>
+            </dependency>
+            <!-- Knife4j 依赖配置 -->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-boot-starter</artifactId>
+                <!--在引用时请在maven中央仓库搜索3.X最新版本号-->
+                <version>${knife4j.version}</version>
+            </dependency>
+            <!--jwt-->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jwt.version}</version>
+            </dependency>
+            <!--httpclient-->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpclient.version}</version>
+            </dependency>
+            <!--文字转拼音-->
+            <dependency>
+                <groupId>com.belerweb</groupId>
+                <artifactId>pinyin4j</artifactId>
+                <version>${pinyin4j.version}</version>
+            </dependency>
+            <!--系统自建模块 start-->
+            <!-- 核心模块 -->
+
+            <!-- 接口模块 -->
+
+            <!-- 安全模块 -->
+
+            <!-- 权限范围 -->
+
+            <!-- 多数据源 -->
+
+            <!-- 日志记录 -->
+
+            <!-- 缓存服务 -->
+
+            <!-- 系统接口 -->
+            <!--系统自建模块 end-->
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <!--bootstrap 启动器-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bootstrap</artifactId>
+        </dependency>
+        <!--配置文件处理器-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!--监控-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <!--测试依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!--监控客户端-->
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
+            <version>${spring-boot-admin.version}</version>
+        </dependency>
+        <!--配置文件加解密-->
+        <dependency>
+            <groupId>com.github.ulisesbocchio</groupId>
+            <artifactId>jasypt-spring-boot-starter</artifactId>
+            <version>${jasypt.version}</version>
+        </dependency>
+        <!--Lombok-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring-boot.version}</version>
+                    <configuration>
+                        <finalName>${project.build.finalName}</finalName>
+                        <layers>
+                            <enabled>true</enabled>
+                        </layers>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!--<plugin>
+                    &lt;!&ndash; 指定maven编译的jdk版本,如果不指定,maven3默认用jdk 1.5 maven2默认用jdk1.3 &ndash;&gt;
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.1</version>
+                    <configuration>
+                        &lt;!&ndash; 一般而言，target与source是保持一致的，但是，有时候为了让程序能在其他版本的jdk中运行(对于低版本目标jdk，源代码中不能使用低版本jdk中不支持的语法)，
+                             会存在target不同于source的情况 &ndash;&gt;
+                        <source>1.8</source>
+                        <target>1.8</target>
+                        <encoding>UTF-8</encoding>
+                        &lt;!&ndash; 源代码使用的JDK版本 &ndash;&gt;
+                        <source>${java.version}</source>
+                        &lt;!&ndash; 需要生成的目标class文件的编译版本 &ndash;&gt;
+                        <target>${java.version}</target>
+                        &lt;!&ndash; 字符集编码 &ndash;&gt;
+                        <encoding>${project.build.sourceEncoding}</encoding>
+                        &lt;!&ndash; 编译器使用的初始内存 &ndash;&gt;
+                        <meminitial>128m</meminitial>
+                        &lt;!&ndash; 编译器使用的最大内存 &ndash;&gt;
+                        <maxmem>512m</maxmem>
+                    </configuration>
+                </plugin>-->
+            </plugins>
+        </pluginManagement>
+    </build>
 
 </project>

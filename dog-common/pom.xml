@@ -11,9 +11,12 @@
 
     <artifactId>dog-common</artifactId>
 
-    <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-    </properties>
+    <description>dog框架公共核心模块</description>
+
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>dog-common-core-starter</module>
+    </modules>
 
 </project>

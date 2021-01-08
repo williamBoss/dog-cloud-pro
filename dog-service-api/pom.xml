@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>dog-servoce-api</artifactId>
+    <artifactId>dog-service-api</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
