@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>dog-common</artifactId>
+        <groupId>com.dog.cloud</groupId>
+        <version>2021.0.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>dog-common-auth-starter</artifactId>
+
+    <description>dog权限模块</description>
+
+    <dependencies>
+        <!--  Common Redis-->
+        <dependency>
+            <groupId>com.dog.cloud</groupId>
+            <artifactId>dog-common-cache-starter</artifactId>
+        </dependency>
+        <!--  Api System -->
+        <dependency>
+            <groupId>com.dog.cloud</groupId>
+            <artifactId>dog-api-system</artifactId>
+        </dependency>
+    </dependencies>
+
+
+</project>

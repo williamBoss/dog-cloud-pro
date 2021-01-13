@@ -409,7 +409,7 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
             return false;
         }
 
-        pattern = pattern.replaceAll("\\s*" , ""); // 替换空格
+        pattern = pattern.replaceAll("\\s*", ""); // 替换空格
         int beginOffset = 0; // pattern截取开始位置
         int formerStarOffset = -1; // 前星号的偏移位置
         int latterStarOffset = -1; // 后星号的偏移位置
@@ -461,6 +461,21 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
         } while (!isEmpty(suffixPattern) && !isEmpty(remainingURI));
 
         return true;
+    }
+
+    /**
+     * 查询字符串是否存在（忽略大小写）
+     *
+     * @param str
+     * @param keyword
+     * @return
+     */
+    public static boolean containsIgnoreCase(CharSequence str, CharSequence keyword) {
+        if (null == str) {
+            return null == keyword;
+        } else {
+            return str.toString().toLowerCase().contains(keyword.toString().toLowerCase());
+        }
     }
 
     @SuppressWarnings("unchecked")

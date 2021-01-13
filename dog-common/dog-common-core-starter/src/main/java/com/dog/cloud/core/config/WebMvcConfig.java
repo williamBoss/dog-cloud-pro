@@ -21,7 +21,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplicat
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.format.datetime.standard.DateTimeFormatterRegistrar;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.reactive.config.WebFluxConfigurer;
 
 import java.time.format.DateTimeFormatter;
 
@@ -35,7 +35,7 @@ import static org.springframework.boot.autoconfigure.condition.ConditionalOnWebA
  */
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnWebApplication(type = SERVLET)
-public class WebMvcConfig implements WebMvcConfigurer {
+public class WebMvcConfig implements WebFluxConfigurer {
 
     /**
      * 增加GET请求参数中时间类型转换

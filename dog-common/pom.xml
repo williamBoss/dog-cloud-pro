@@ -10,13 +10,19 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>dog-common</artifactId>
-
     <description>dog框架公共核心模块</description>
 
     <packaging>pom</packaging>
 
     <modules>
         <module>dog-common-core-starter</module>
+        <module>dog-common-datasource-starter</module>
+        <module>dog-common-knife4j-starter</module>
+        <module>dog-common-spring-security-starter</module>
+        <module>dog-common-log-starter</module>
+        <module>dog-common-cache-starter</module>
+        <module>dog-common-feign-starter</module>
+        <module>dog-common-auth-starter</module>
     </modules>
 
 </project>

@@ -1,0 +1,66 @@
+server:
+  port: 9528
+
+# Spring
+spring:
+  application:
+    # 应用名称
+    name: dog-gateway
+  profiles:
+    # 环境配置
+    active: dev
+  main:
+    # 是否允许使用相同名称重新注册不同的bean实现
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      discovery:
+        # 服务注册地址
+        server-addr: 127.0.0.1:8848
+      config:
+        # 配置中心地址
+        server-addr: 127.0.0.1:8848
+        # 配置文件格式
+        file-extension: yml
+        # 共享配置
+    #        shared-configs[0]:
+    #          data-id: wx-config-prod.yml
+    #          refresh: true
+    sentinel:
+      # 取消控制台懒加载
+      eager: true
+      transport:
+        # 控制台地址
+        dashboard: 127.0.0.1:8718
+      # nacos配置持久化
+      datasource:
+        ds1:
+          nacos:
+            server-addr: 127.0.0.1:8848
+            dataId: sentinel-dog-gateway
+            groupId: DEFAULT_GROUP
+            data-type: json
+            rule-type: flow
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: on
+      routes:
+        # 认证中心
+        - id: dog-auth
+          uri: lb://dog-auth
+          predicates:
+            - Path=/auth/**
+          filters:
+            # 验证码处理
+            - CacheRequestFilter
+            - ValidateCodeFilter
+            - StripPrefix=1
+        # 基础系统
+        - id: cloud-system
+          uri: lb://cloud-system
+          predicates:
+            - Path=/system/**
+          filters:
+            - StripPrefix=1

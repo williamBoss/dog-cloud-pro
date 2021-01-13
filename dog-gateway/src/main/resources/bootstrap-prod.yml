@@ -1,0 +1,10 @@
+server:
+  port: 9528
+
+spring:
+  cloud:
+    nacos:
+      config:
+        namespace: bb09bb4b-b8b2-4449-b679-123add9cca8a # prod 命名空间id
+      discovery:
+        namespace: bb09bb4b-b8b2-4449-b679-123add9cca8a # prod 命名空间id

@@ -15,21 +15,22 @@
  */
 package com.dog.cloud.core.config;
 
+import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.reactive.config.WebFluxConfigurer;
 
 /**
- *
  * MybatisPlus 配置
  *
  * @author KING
  */
 @Configuration
-@MapperScan({"com.base.pro.**.mapper", "com.cdms.**.mapper"})
-public class MybatisPlusConfig {
+@MapperScan({"com.dog.cloud.**.mapper", "com.cdms.**.mapper"})
+public class MybatisPlusConfig implements WebFluxConfigurer {
 
     /**
      * 分页插件
@@ -37,11 +38,21 @@ public class MybatisPlusConfig {
     @Bean
     public MybatisPlusInterceptor mybatisPlusInterceptor() {
         MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
-        PaginationInnerInterceptor paginationInterceptor = new PaginationInnerInterceptor();
+        PaginationInnerInterceptor paginationInterceptor = new PaginationInnerInterceptor(DbType.MYSQL);
         paginationInterceptor.setMaxLimit(500L);
         paginationInterceptor.setOverflow(false);
         interceptor.addInnerInterceptor(paginationInterceptor);
         return interceptor;
     }
+
+    /**
+     * SQL 过滤器避免SQL 注入
+     *
+     * @param argumentResolvers
+     */
+   /* @Override
+    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
+        argumentResolvers.add(new SqlFilterArgumentResolver());
+    }*/
 
 }
