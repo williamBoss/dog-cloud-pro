@@ -10,10 +10,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>dog-visual</artifactId>
+    <description>dog图形化管理模块</description>
 
-    <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-    </properties>
+    <packaging>pom</packaging>
+    <modules>
+        <module>dog-monitor</module>
+    </modules>
 
 </project>

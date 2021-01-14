@@ -1,6 +1,7 @@
 package com.dog.cloud.core.result;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -34,6 +35,13 @@ public class PageResult<T> {
         pageResult.setTotal(page.getTotal());
         pageResult.setPageNum(page.getCurrent());
         pageResult.setPageSize(page.getSize());
+        return BaseResult.<PageResult<T>>success().data(pageResult);
+    }
+
+    public static <T> BaseResult<PageResult<T>> result(List<T> list) {
+        PageResult<T> pageResult = new PageResult<>();
+        pageResult.setRecords(list);
+        pageResult.setTotal(new PageInfo<T>(list).getTotal());
         return BaseResult.<PageResult<T>>success().data(pageResult);
     }
 

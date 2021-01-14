@@ -1,0 +1,10 @@
+server:
+  port: 9528
+
+spring:
+  cloud:
+    nacos:
+      config:
+        namespace: 4ca94baf-d0a6-4ac0-84c2-93f31fdccde1 # test 命名空间id
+      discovery:
+        namespace: 4ca94baf-d0a6-4ac0-84c2-93f31fdccde1 # test 命名空间id

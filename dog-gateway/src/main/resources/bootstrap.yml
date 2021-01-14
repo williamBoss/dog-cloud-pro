@@ -58,8 +58,8 @@ spring:
             - ValidateCodeFilter
             - StripPrefix=1
         # 基础系统
-        - id: cloud-system
-          uri: lb://cloud-system
+        - id: dog-system
+          uri: lb://dog-system
           predicates:
             - Path=/system/**
           filters:

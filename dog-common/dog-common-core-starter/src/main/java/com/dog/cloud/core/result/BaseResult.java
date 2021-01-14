@@ -46,6 +46,16 @@ public class BaseResult<T> implements Serializable {
     }
 
     /**
+     * 根据是否有修改行数判断成功与否
+     *
+     * @param rows
+     * @return
+     */
+    public static BaseResult<?> toBaseResult(int rows) {
+        return rows > 0 ? BaseResult.success() : BaseResult.failure();
+    }
+
+    /**
      * 成功方法
      *
      * @return

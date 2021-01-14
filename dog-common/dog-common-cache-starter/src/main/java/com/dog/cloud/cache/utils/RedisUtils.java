@@ -7,6 +7,7 @@ import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.util.Collection;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -33,6 +34,16 @@ public class RedisUtils {
      * 不设置过期时长
      */
     public final static long NOT_EXPIRE = -1;
+
+    /**
+     * 获得缓存的基本对象列表
+     *
+     * @param pattern 字符串前缀
+     * @return 对象列表
+     */
+    public Collection<String> keys(final String pattern) {
+        return redisTemplate.keys(pattern);
+    }
 
     /**
      * 插入缓存默认时间
@@ -141,6 +152,16 @@ public class RedisUtils {
      */
     public void delete(String key) {
         redisTemplate.delete(key);
+    }
+
+    /**
+     * 删除集合对象
+     *
+     * @param collection 多个对象
+     * @return
+     */
+    public long deleteObjects(final Collection collection) {
+        return redisTemplate.delete(collection);
     }
 
     /**

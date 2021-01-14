@@ -3,7 +3,7 @@ package com.dog.cloud.log.enums;
 /**
  * 业务操作类型
  *
- * @author ruoyi
+ * @author KING
  */
 public enum BusinessType {
     /**

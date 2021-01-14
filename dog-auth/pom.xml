@@ -28,16 +28,6 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
         </dependency>
-        <!-- SpringBoot Actuator -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <!-- Mysql Connector -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
         <!-- Common -->
         <dependency>
             <groupId>com.dog.cloud</groupId>
@@ -51,6 +41,10 @@
         <dependency>
             <groupId>com.dog.cloud</groupId>
             <artifactId>dog-api-system</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.dog.cloud</groupId>
+            <artifactId>dog-common-datasource-starter</artifactId>
         </dependency>
     </dependencies>
 

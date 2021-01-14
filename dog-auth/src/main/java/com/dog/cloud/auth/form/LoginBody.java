@@ -3,7 +3,7 @@ package com.dog.cloud.auth.form;
 /**
  * 用户登录对象
  * 
- * @author ruoyi
+ * @author KING
  */
 public class LoginBody
 {

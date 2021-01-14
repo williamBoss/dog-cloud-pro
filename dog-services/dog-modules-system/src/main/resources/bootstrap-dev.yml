@@ -1,0 +1,15 @@
+server:
+  port: 8003
+
+spring:
+  cloud:
+    nacos:
+      config:
+        # 配置中心地址
+        server-addr: 47.100.221.10:8848
+        # 配置文件格式
+        file-extension: yml
+        namespace: 98bbd7ed-72c0-47bf-81bb-2f9a42bc1805 # dev 命名空间id
+      discovery:
+        server-addr: 47.100.221.10:8848
+        namespace: 98bbd7ed-72c0-47bf-81bb-2f9a42bc1805 # dev 命名空间id

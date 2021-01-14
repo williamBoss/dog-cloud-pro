@@ -3,7 +3,7 @@ package com.dog.cloud.log.enums;
 /**
  * 操作人类别
  *
- * @author ruoyi
+ * @author KING
  */
 public enum OperatorType {
     /**
