@@ -9,6 +9,7 @@ import com.dog.cloud.gateway.service.ValidateCodeService;
 import com.google.code.kaptcha.Producer;
 import org.apache.commons.lang3.StringUtils;
 import org.bouncycastle.util.encoders.Base64;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FastByteArrayOutputStream;
 
@@ -37,8 +38,11 @@ public class ValidateCodeServiceImpl implements ValidateCodeService {
     @Resource
     private RedisUtils redisUtils;
 
-    // 验证码类型
-    private String captchaType = "math";
+    /**
+     * 验证码类型
+     */
+    @Value("${captcha.type:char}")
+    private String captchaType;
 
     /**
      * 生成验证码
