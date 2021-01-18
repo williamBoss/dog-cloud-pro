@@ -23,9 +23,9 @@ spring:
         # 配置文件格式
         file-extension: yml
         # 共享配置
-    #        shared-configs[0]:
-    #          data-id: wx-config-prod.yml
-    #          refresh: true
+        shared-configs[0]:
+          data-id: application-dev.yml
+          refresh: true
     sentinel:
       # 取消控制台懒加载
       eager: true

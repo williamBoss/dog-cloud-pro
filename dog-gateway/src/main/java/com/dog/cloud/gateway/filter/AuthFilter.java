@@ -25,8 +25,6 @@ import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  * 网关鉴权
@@ -51,7 +49,6 @@ public class AuthFilter implements GlobalFilter, Ordered {
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         String url = exchange.getRequest().getURI().getPath();
         // 跳过不需要验证的路径
-        ignoreWhite.setWhites(new ArrayList<String>(Collections.singleton("/**/v2/api-docs")));
         if (StringUtils.matches(url, ignoreWhite.getWhites())) {
             return chain.filter(exchange);
         }

@@ -10,6 +10,10 @@ spring:
         # 配置文件格式
         file-extension: yml
         namespace: 98bbd7ed-72c0-47bf-81bb-2f9a42bc1805 # dev 命名空间id
+        # 共享配置
+        shared-configs[0]:
+          data-id: application-dev.yml
+          refresh: true
       discovery:
         server-addr: 47.100.221.10:8848
         namespace: 98bbd7ed-72c0-47bf-81bb-2f9a42bc1805 # dev 命名空间id

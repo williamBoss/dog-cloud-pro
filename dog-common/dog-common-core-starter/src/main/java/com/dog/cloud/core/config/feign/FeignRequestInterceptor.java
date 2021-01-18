@@ -5,6 +5,7 @@ import com.dog.cloud.core.utils.ServletUtils;
 import com.dog.cloud.core.utils.StringUtils;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,7 @@ import java.util.Map;
  *
  * @author KING
  */
+@Slf4j
 @Component
 public class FeignRequestInterceptor implements RequestInterceptor {
     @Override

@@ -21,7 +21,6 @@ import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerIntercept
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.reactive.config.WebFluxConfigurer;
 
 /**
  * MybatisPlus 配置
@@ -29,8 +28,8 @@ import org.springframework.web.reactive.config.WebFluxConfigurer;
  * @author KING
  */
 @Configuration
-@MapperScan({"com.dog.cloud.**.mapper", "com.cdms.**.mapper"})
-public class MybatisPlusConfig implements WebFluxConfigurer {
+@MapperScan({"com.dog.cloud.**.mapper"})
+public class MybatisPlusConfig {
 
     /**
      * 分页插件
@@ -44,15 +43,5 @@ public class MybatisPlusConfig implements WebFluxConfigurer {
         interceptor.addInnerInterceptor(paginationInterceptor);
         return interceptor;
     }
-
-    /**
-     * SQL 过滤器避免SQL 注入
-     *
-     * @param argumentResolvers
-     */
-   /* @Override
-    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
-        argumentResolvers.add(new SqlFilterArgumentResolver());
-    }*/
 
 }

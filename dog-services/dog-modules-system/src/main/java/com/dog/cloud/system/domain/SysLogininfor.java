@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * 系统访问记录表 sys_logininfor
@@ -46,6 +46,6 @@ public class SysLogininfor extends BaseEntity {
      * 访问时间
      */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date accessTime;
+    private LocalDateTime accessTime;
 
 }

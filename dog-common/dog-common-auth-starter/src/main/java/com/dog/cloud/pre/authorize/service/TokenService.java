@@ -9,6 +9,7 @@ import com.dog.cloud.core.utils.SecurityUtils;
 import com.dog.cloud.core.utils.ServletUtils;
 import com.dog.cloud.core.utils.StringUtils;
 import com.dog.cloud.core.utils.ip.IpUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,8 +23,10 @@ import java.util.concurrent.TimeUnit;
  *
  * @author KING
  */
+@Slf4j
 @Component
 public class TokenService {
+
     @Autowired
     private RedisUtils redisUtils;
 
@@ -43,7 +46,7 @@ public class TokenService {
         loginUser.setUserid(loginUser.getSysUser().getUserId());
         loginUser.setUsername(loginUser.getSysUser().getUserName());
         loginUser.setIpaddr(IpUtils.getIpAddr(ServletUtils.getRequest()));
-        refreshToken(loginUser);
+        //refreshToken(loginUser);
 
         // 保存或更新用户token
         Map<String, Object> map = new HashMap<String, Object>();

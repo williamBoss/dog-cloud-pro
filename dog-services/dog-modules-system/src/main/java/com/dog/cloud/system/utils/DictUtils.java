@@ -5,6 +5,8 @@ import com.dog.cloud.core.constant.Constants;
 import com.dog.cloud.core.utils.StringUtils;
 import com.dog.cloud.core.utils.spring.SpringUtils;
 import com.dog.cloud.system.domain.SysDictData;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.util.Collection;
 import java.util.List;
@@ -32,10 +34,10 @@ public class DictUtils {
      * @return dictDatas 字典数据列表
      */
     public static List<SysDictData> getDictCache(String key) {
-        Object cacheObj = SpringUtils.getBean(RedisUtils.class).get(getCacheKey(key));
-        if (StringUtils.isNotNull(cacheObj)) {
-            List<SysDictData> dictDatas = StringUtils.cast(cacheObj);
-            return dictDatas;
+        String cacheObj = SpringUtils.getBean(RedisUtils.class).get(getCacheKey(key));
+        if (StringUtils.isNotBlank(cacheObj)) {
+            return new Gson().fromJson(cacheObj, new TypeToken<List<SysDictData>>() {
+            }.getType());
         }
         return null;
     }

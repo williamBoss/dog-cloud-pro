@@ -52,6 +52,12 @@
         <dependency>
             <groupId>com.dog.cloud</groupId>
             <artifactId>dog-common-cache-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>spring-boot-starter-web</artifactId>
+                    <groupId>org.springframework.boot</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
