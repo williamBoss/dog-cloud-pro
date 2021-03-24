@@ -75,7 +75,7 @@ public class ValidateCodeServiceImpl implements ValidateCodeService {
             return BaseResult.<Map<String, Object>>failure().message(e.getMessage());
         }
         BaseResult<Map<String, Object>> result = BaseResult.success();
-        Map<String, Object> captchaMap = new HashMap<>();
+        Map<String, Object> captchaMap = new HashMap<>(2);
         captchaMap.put("uuid", uuid);
         captchaMap.put("img", Base64.encode(os.toByteArray()));
         result.data(captchaMap);

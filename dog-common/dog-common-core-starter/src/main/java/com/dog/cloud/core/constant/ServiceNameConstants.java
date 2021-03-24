@@ -14,4 +14,12 @@ public class ServiceNameConstants {
      * 系统模块的serviceid
      */
     public static final String SYSTEM_SERVICE = "dog-system";
+    /**
+     * cdms 配置模块的serviceid
+     */
+    public static final String CDMS_CONFIG = "cdms-config";
+    /**
+     * cdms 患者模块的serviceid
+     */
+    public static final String CDMS_PATIENT = "cdms-patient";
 }

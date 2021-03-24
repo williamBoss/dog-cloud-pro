@@ -38,7 +38,9 @@ public class AuthFilter implements GlobalFilter, Ordered {
 
     private final static long EXPIRE_TIME = Constants.TOKEN_EXPIRE * 60;
 
-    // 排除过滤的 uri 地址，nacos自行添加
+    /**
+     * 排除过滤的 uri 地址，nacos自行添加
+     */
     @Autowired
     private IgnoreWhiteProperties ignoreWhite;
 

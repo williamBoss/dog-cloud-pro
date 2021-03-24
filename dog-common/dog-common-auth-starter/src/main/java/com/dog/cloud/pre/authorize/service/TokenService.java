@@ -49,7 +49,7 @@ public class TokenService {
         //refreshToken(loginUser);
 
         // 保存或更新用户token
-        Map<String, Object> map = new HashMap<String, Object>();
+        Map<String, Object> map = new HashMap<String, Object>(2);
         map.put("access_token", token);
         map.put("expires_in", EXPIRE_TIME);
         redisUtils.set(ACCESS_TOKEN + token, loginUser, EXPIRE_TIME, TimeUnit.SECONDS);

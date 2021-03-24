@@ -6,6 +6,8 @@ import com.dog.cloud.core.model.entity.system.LoginUser;
 import com.dog.cloud.core.result.BaseResult;
 import com.dog.cloud.core.utils.StringUtils;
 import com.dog.cloud.pre.authorize.service.TokenService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,6 +25,7 @@ import java.util.Map;
  */
 @Slf4j
 @RestController
+@Api(tags = "token控制")
 public class TokenController {
     @Autowired
     private TokenService tokenService;
@@ -31,6 +34,7 @@ public class TokenController {
     private SysLoginService sysLoginService;
 
     @PostMapping("login")
+    @ApiOperation(value = "登录")
     public BaseResult<?> login(@RequestBody LoginBody form) {
         // 用户登录
         LoginUser userInfo = sysLoginService.login(form.getUsername(), form.getPassword());
@@ -40,6 +44,7 @@ public class TokenController {
     }
 
     @DeleteMapping("logout")
+    @ApiOperation(value = "登出")
     public BaseResult<?> logout(HttpServletRequest request) {
         LoginUser loginUser = tokenService.getLoginUser(request);
         if (StringUtils.isNotNull(loginUser)) {
@@ -53,6 +58,7 @@ public class TokenController {
     }
 
     @PostMapping("refresh")
+    @ApiOperation(value = "刷新token")
     public BaseResult<?> refresh(HttpServletRequest request) {
         LoginUser loginUser = tokenService.getLoginUser(request);
         if (StringUtils.isNotNull(loginUser)) {

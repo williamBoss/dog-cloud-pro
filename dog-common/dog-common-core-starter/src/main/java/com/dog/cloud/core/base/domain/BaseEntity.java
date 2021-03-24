@@ -10,7 +10,6 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -64,6 +63,7 @@ public class BaseEntity implements Serializable {
      * 备注
      */
     @ApiModelProperty(value = "备注")
+    @TableField(value = "remark")
     private String remark;
 
     /**

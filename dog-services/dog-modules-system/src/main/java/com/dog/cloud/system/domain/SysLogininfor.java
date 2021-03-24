@@ -45,7 +45,7 @@ public class SysLogininfor extends BaseEntity {
     /**
      * 访问时间
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss")
     private LocalDateTime accessTime;
 
 }

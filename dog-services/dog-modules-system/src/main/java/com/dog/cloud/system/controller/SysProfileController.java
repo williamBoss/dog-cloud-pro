@@ -36,7 +36,7 @@ public class SysProfileController extends BaseController {
     public BaseResult<?> profile() {
         String username = SecurityUtils.getUsername();
         SysUser user = userService.selectUserByUserName(username);
-        Map<String, Object> data = new HashMap<>();
+        Map<String, Object> data = new HashMap<>(2);
         data.put("roleGroup", userService.selectUserRoleGroup(username));
         data.put("postGroup", userService.selectUserPostGroup(username));
         return BaseResult.success().data(data);

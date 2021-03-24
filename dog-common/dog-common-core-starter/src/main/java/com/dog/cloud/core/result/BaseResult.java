@@ -17,8 +17,8 @@ import java.io.Serializable;
  */
 @Data
 @Accessors(chain = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
 @ApiModel("通用返回对象")
+@JsonInclude(JsonInclude.Include.ALWAYS)
 public class BaseResult<T> implements Serializable {
 
     private static final long serialVersionUID = -3507193252343603605L;

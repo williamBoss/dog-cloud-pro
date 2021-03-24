@@ -23,7 +23,7 @@ public interface RemoteLogService {
      * @return 结果
      */
     @PostMapping("/operlog")
-    BaseResult<Boolean> saveLog(@RequestBody SysOperLog sysOperLog);
+    BaseResult<?> saveLog(@RequestBody SysOperLog sysOperLog);
 
     /**
      * 保存访问记录
@@ -34,6 +34,6 @@ public interface RemoteLogService {
      * @return 结果
      */
     @PostMapping("/logininfor")
-    BaseResult<Boolean> saveLogininfor(@RequestParam("username") String username, @RequestParam("status") String status,
+    BaseResult<?> saveLogininfor(@RequestParam("username") String username, @RequestParam("status") String status,
         @RequestParam("message") String message);
 }

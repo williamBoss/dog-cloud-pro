@@ -89,7 +89,7 @@ public class SysUserController extends BaseController {
         Set<String> roles = permissionService.getRolePermission(userId);
         // 权限集合
         Set<String> permissions = permissionService.getMenuPermission(userId);
-        Map<String, Object> data = new HashMap<>();
+        Map<String, Object> data = new HashMap<>(3);
         data.put("user", userService.selectUserById(userId));
         data.put("roles", roles);
         data.put("permissions", permissions);

@@ -83,7 +83,7 @@ public class SysDeptController extends BaseController {
     @GetMapping(value = "/roleDeptTreeselect/{roleId}")
     public BaseResult<?> roleDeptTreeselect(@PathVariable("roleId") Long roleId) {
         List<SysDept> depts = deptService.selectDeptList(new SysDept());
-        Map<String, Object> data = new HashMap<>();
+        Map<String, Object> data = new HashMap<>(2);
         data.put("checkedKeys", deptService.selectDeptListByRoleId(roleId));
         data.put("depts", deptService.buildDeptTreeSelect(depts));
         return BaseResult.success().data(data);

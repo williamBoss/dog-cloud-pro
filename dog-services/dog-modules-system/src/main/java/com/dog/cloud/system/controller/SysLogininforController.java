@@ -54,7 +54,6 @@ public class SysLogininforController extends BaseController {
     public BaseResult<?> add(@RequestParam("username") String username, @RequestParam("status") String status,
         @RequestParam("message") String message) {
         String ip = IpUtils.getIpAddr(ServletUtils.getRequest());
-
         // 封装对象
         SysLogininfor logininfor = new SysLogininfor();
         logininfor.setUserName(username);
